@@ -1,0 +1,72 @@
+body {
+    background: black;
+    color: white;
+    margin:5%;
+    
+}
+/*------------------- HEADER BAR ---------------------------*/
+
+#navBar a{  /* implement with flex box if reqd*/
+    padding: 0.5% 2%;
+    background: rgb(112,128,144,50%);
+    border-radius : 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    margin-right: 15px;
+}
+#navBar a:hover{
+    background:  rgb(112,128,144,70%);
+}
+#navBar span i{
+    position: relative;
+    right:auto;
+  }
+
+/*------------------- SECTION HEADER TEXT ------------------------*/
+section {
+    margin: 5% auto;
+}
+
+section .customHeader h1{
+    font-size: 150;
+}
+
+section .customHeader h2{
+    font-size: 40;
+}
+
+section .customHeader h3{
+    font-size: 30;
+
+}
+section .customHeader h5{
+    font-size: 25;
+}
+
+/*------------------- SECTION TABLE ------------------------*/
+
+.meals-grid-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr 2fr 2fr;
+    grid-template-rows: auto;
+    row-gap: 15px;
+    column-gap: 15px;
+}
+
+.meals-grid-item-header{
+    background: rgb(255,255,255,70%);
+    border-radius: 8px;
+    padding:2%;
+    text-align: center;
+    color: black;
+
+}
+
+.meals-grid-item{
+    background: rgb(112,128,144,50%);
+    border-radius: 8px;
+    padding:10%;
+    text-align: center;
+
+}

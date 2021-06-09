@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+	<head>
+		<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+		<link rel="stylesheet" type= "text/css" href= "{% static '/css/styles.css' %}">
+	</head>
+	<title>Home</title>
+	<body>
+		<nav>
+			<div id=navBar>
+				<a href="{% url 'covidmeals:meals' %}">Meals</a>
+				<a href="vaccination/">Vaccination</a>
+				<a href="beds/">Bed Allocation</a>
+			</div>
+		</nav>
+
+		<section>
+			<div class=customHeader>
+				<h1>Holistic COVID-19<br>Information for<br>everyone in India.</h1>
+				<h5 id=subHeaderText>Get real-time information on emergency bed availability, covid-meal<br>services, vaccine availability and authority guidelines – All in one place.</h5>
+			</div>
+		</section>
+	</body>
+</html>
