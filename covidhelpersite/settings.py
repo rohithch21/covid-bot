@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-s8f5k-o+y5avh2a9-e9j-xegj(9%%+8erkd=z4+@wd5u97^8t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "covid-bot-one.herokuapp.com"]
+ALLOWED_HOSTS = ["covid-bot-one.herokuapp.com", "127.0.0.1",]
 
 
 # Application definition
