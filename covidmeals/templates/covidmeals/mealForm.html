@@ -11,40 +11,49 @@
 		<nav>
 			<div id=navBar>
 				<a href="{% url 'covidmeals:meals' %}" style="background:rgba(255, 255, 255, 0.7);">Meals</a>
-				<a href="">Vaccination</a>
-				<a href="">Bed Allocation</a>
-                <span class="w3-xxlarge" style="background:none;"><a href="{% url 'covidmeals:index' %}"><i class="fa fa-home"></i></a></span>
+				<a href="/about">About Us</a>
+                <span class="w3-xxlarge"><a href="{% url 'covidmeals:index' %}" style="background:none;"><i class="fa fa-home"></i></a></span>
 			</div>
 		</nav>
         <div class="customheader">
-            <h2>Add the details of your meal service for COVID pateients here</h2> <!-- Add width wrapper css -->
-            <h5>Kindly cross-check for any errors made to avaoid any hassles for people <br>trying to connect with you.</h3>
+            <h2>Add the details of your meal service for COVID patients here</h2> <!-- Add width wrapper css -->
+            <h5>Kindly cross-check for any errors made to avoid any hassles for people <br>trying to connect with you.</h3>
         </div>
 
         <form id="mealsForm" form="mealsForm" action="/mealForm/" target="_self" method="post">
             {%csrf_token%}
+            <p>* marks the mandatory fields</p>
             <div class="form1">
-                <label for="Name">Name : </label>
+                <!-- <label for="Name">Name : </label> -->
+                <p>Enter your Name*</p>
                 <input name="Name" type="text" placeholder="Name" required> <br><br>
-                <label for="Email">Email : </label>
-                <input name="Email" type="text" placeholder="Email ID" > <br><br>
-                <label for="phone"> Phone Number : </label>
-                <input name="phone"  type="tel" id="idPhone" placeholder="+91"  pattern="[6-9]{1}[0-9]{9}" required><br><br>
-                <label for="states">State</label>
-                <select name="states" form="mealsForm" required>
+                <!-- <label for="Email">Email : </label> -->
+                <p>Enter your Email ID</p>
+                <input name="Email" type="text" placeholder="Email ID"> <br><br>
+                <!-- <label for="phone"> Phone : </label> -->
+                <p>Your 10 digit Phone Number*</p>
+                <input name="phone"  type="tel" id="idPhone" placeholder="+91" pattern="[6-9]{1}[0-9]{9}" required style="text-align: left;"><br><br>
+                <!-- <label for="states">State : </label> -->
+                <hr>
+                <h2 style="padding-bottom: 10px;">Where are you put up?*</h2>
+                <select id="idState" name="states" form="mealsForm" required>
+                    <option>State</option>
                     <option value="Karnataka">Karnataka</option>
-                    <option value="Kerala">Kerala</option>
                 </select><br><br>
-                <label for="city">City</label>
-                <select name="city" form="mealsForm" required>
+                <!-- <label for="city">City : </label> -->
+                <select id="idCity" name="city" form="mealsForm" required>
+                    <option>City</option>
                     <option value="Bangalore">Bangalore</option>
                 </select><br><br>
-                <label for="area">Area</label>
+                <!-- <label for="area">Area : </label> -->
                 <select id="idArea" name="area" form="mealsForm" required>
-                </select><br><br>
+                    <option>Area</option>
+                </select>
+                <hr>
                 <!-- <input type="text" placeholder="Areas Serviced"><br><br> -->
             </div>
             <div class="form2">
+                <h2>Food Services offered</h2>
                 <input type="checkbox" value="Breakfast" name="breakfast">
                 <label for="breakfast">&nbsp;Breakfast</label><br><br>
                 <input type="checkbox" value="Lunch" name="lunch">
@@ -52,34 +61,33 @@
                 <input type="checkbox" value="Dinner" name="dinner">
                 <label for="breakfast">&nbsp;Dinner</label> <br><br>
 
-                <p>Please select one of the options served</p><br>
-
+                <h2>Food options available</h2>
                 <input type="checkbox" value="V" name="veg">
-                <label for="veg">&nbsp;Veg</label><br><br>
+                <label for="veg">&nbsp;Veg</label> &nbsp; &nbsp;&nbsp;
                 <input type="checkbox" value="N" name="nonveg">
-                <label for="nonveg">&nbsp;Non Veg</label> <br><br>
+                <label for="nonveg">&nbsp;Non Veg</label> &nbsp; &nbsp;&nbsp;
                 <input type="checkbox" value="B" name="both">
-                <label for="both">&nbsp;Veg and Non Veg</label> <br><br>
-
-                <p>Please select one of the options</p><br>
-
+                <label for="both">&nbsp;Custom Preparation</label>
+                <p>Kindly provide additional details for custom prepartion if any below.</p> <br>
+                <p>Select whichever is applicable</p>
                 <input type="checkbox" value="F" name="free">
                 <label for="free">&nbsp;Free</label> <br><br>
                 <input type="checkbox" value="P" name="paid">
-                <label for="paid">&nbsp;Paid</label> <br><br>
-                <p> If paid service, provide necessary details in the Additional Details textbox</p>
+                <label for="paid">&nbsp;Paid</label>
+                <p> If paid service, provide necessary details below</p>
 
                 
             </div>
             <div class="form3">
-                <textarea name="address" placeholder="Provide your address here .." ></textarea><br><br><br>
-                <textarea name="addDetailsName" placeholder="Any additional details ..."></textarea>
+                <textarea name="address" placeholder="Provide your address here .." rows=4 cols=50 ></textarea>
+                <p>Add all the necessary additiona details here</p>
+                <textarea name="addDetailsName" placeholder="Any additional details ..." rows=6 cols=50></textarea>
             </div>
-
-            <input type="submit" value="Submit">
+            
+            <input type="submit" value="Submit" style="padding: 0 2%; background-color: azure; margin-top: 2em; ">
             
         </form>
-
+        <p style="padding-bottom: 5%;">Note - I you wish to update your details, please write to us via email. The contact information be found in the About Us page.</p>
         <script>
 			var areas = {
     "Bangalore": ["Agrahara", "AGS layout", "Akshayanagar", "Akshaynagar", "Ali Askar Road", "Allalasandra", "Amrutahalli ", "Anandnagar", "Anekal", "Ashwath Nagar", "Attiguppe", "Austin Town", "Babusapalya", "Bagalgunte", "Bagalur", "Banashankari", "Banaswadi", "Bangalore South", "Bannerghatta", "Basavanagudi", "Basaveshvaranagar", "Basveshwanagar", "Begur", "BEL", "Bellandur", "Benson Town", "Bhoopasandra", "Bilekahalli", "Bilishivale", "Binnypet", "Bommanahalli", "Borewell road", "Borewell Road", "Brookefield ", "BTM Layout", "Budigere", "Carmelaram", "Central Bangalore", "Chanasandhra", "Chandra Layout", "Chikkabanavara", "Chikkabellandur", "Chikkalasandra", "Chodarapalya", "Cooke Town", "Cox Town", "Cunningham road", "CV Raman Nagar", "Deepanjalinagar", "Devarachikanahalli", "Devasandra", "Diamond district", "Doddakallasandra", "Dodsworth Layout", "Dollars Colony", "Domlur", "ECC road", "Ejipura", "Electronic City", "Fraser Town", "Ganganagar", "Geddalahalli", "Girinagar", "Gokula Extension", "Goripalya", "Gottigere", "Gunjur", "Hadosiddapura", "HAL", "Hanumanthnagar", "Hapinagar", "Haralur Road", "HBR layout", "Hebbal", "Hennur", "Hongasandra", "Hoodi", "Hope Farm", "Horamavu", "Hosa Road", "Hosakerehalli", "Hosakerihall", "Hoskerehalli", "Hoskote", "Hosur", "HRBR Layout", "HSR Layout", "Hulimavu", "Immidahalli", "Indiranagar", "ITPL", "Ittamadu", "Jakkur", "Jalahalli", "Jayanagar", "Jeevanbheema Nagar", "JP Nagar", "Kadubeesanahalli", "Kadugodi", "Kagadaspura", "Kaggadasapura", "Kaggalipura", "Kalena", "Kalkere", "Kalyan Nagar", "Kammanahalli", "Kanakapura Road", "Kasturinagar", "Kathriguppe", "Kavalbyrasandra", "Kempapura", "Kengeri", "Kodathi", "Kodigehalli", "Kogilu", "Konankunte Cross", "Koramangala", "KR Puram", "Kudlu Gate", "Kumara Park", "Kumara Park West", "Kumara Swami Layout", "Kumaraswamy Layout", "Kumbalgodu", "Kundalahalli", "Kuvempunagar", "Lingarajpuram", "Madiwala", "Magadi Road", "Mahadevapura", "Mahalakshmi Layout", "Mahalakshmi layout", "Malagala", "Mallathalli", "Malleshpalya", "Malleswaram", "Manyata Tech Park", "Marathahalli", "Maruthi Sevanagar", "Mathikere", "Millers Road", "Moodalpalya", "MS Palya", "Mudalpalya", "Munnekolala", "Murgeshpalya", "Mysore Road", "Nagadevanahalli", "Nagarbhavi", "Nagawara", "Nandi Durga Road", "Nandini Layout", "Nayandahalli", "Nelurhalli", "New BEL Road", "New Thippasandra", "Nimbekaipura", "North Bangalore", "NR Colony", "NRI Layout", "Nyanappanhalli", "Old Airport Road", "Old Madras Road", "Panathur", "Peenya", "Prashant Layout", "Prashant Nagar", "Prashanth layout", "Prashanth Layout", "Raghuvanahalli", "Rajaji Nagar", "Rajajinagar", "Rajarajeshwari Nagar", "Ramamurthy Nagar", "Richardstown", "Richmond Road", "RMV Extension", "RMV II Stage", "RPC Layout", "RT Nagar", "Sadashiv Nagar", "Sadashivnagar", "Sahakarnagar", "Sarakki", "Sarjapur", "Seegahalli", "Seegehalli", "Seshadaripuram", "Shanthivana", "Silkboard", "Singapura", "Singasandra", "South Bangalore", "Sultanpalya", "Tavarekere", "TC Palya", "Thanisandra", "Thindlu", "Thippasandra", "Tin factory", "Tyagarajanagar", "Ulsoor", "Uttarahalli", "Varthur", "Vasanth Nagar", "Vasanthapura", "Vasanthnagar", "Vidyaranyapura", "Vignan Nagar", "Vijaya Bank Layout", "Vijaynagar", "Vishwapriya layout", "VV Puram ", "Vyalikaval Layout", "Whitefield", "Wilson Garden", "Yelahanka", "Yellachanahalli", "Yeshwantpur"
@@ -98,5 +106,8 @@
 			}
 		 </script>
     </body>
+    <footer>
+        {% include 'covidmeals/footer.html' %}
+    </footer>
 </html>
     

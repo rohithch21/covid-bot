@@ -2,7 +2,7 @@ body {
     background: black;
     color: white;
     margin:5%;
-    
+    height:100%;    
 }
 /*------------------- HEADER BAR ---------------------------*/
 
@@ -18,44 +18,108 @@ body {
 #navBar a:hover{
     background:  rgb(112,128,144,70%);
 }
-#navBar span i{
-    position: relative;
-    right:auto;
+nav span a {
+    position: absolute;
+    right: 5%;
+    top: 10%;
   }
+
+  @media screen and (max-width:480){
+
+  }
+
+  /*------------------- SECTION FILTER SELECTS ------------------------*/
+
+:root {
+    --select-border: #777;
+    --select-focus: blue;
+    --select-arrow: var(--select-border);
+  }
+select, input[type="text"], input[type="tel"] {
+    /* A reset of styles, including removing the default dropdown arrow */
+    /* appearance: none; */
+    /*  Additional resets for further consistency */
+    background-color: #fff;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    margin: 1%;
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    font-family: inherit;
+    font-size: 1.25rem;
+    cursor: inherit;
+    line-height: 1.1;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+
+  }
+  .select::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    
+  }
+  #idState:focus option:first-of-type {
+    display: none;
+  }
+  #idCity:focus option:first-of-type {
+    display: none;
+  }
+  #idArea:focus option:first-of-type {
+    display: none;
+  }
+
+  #searchButton{
+      position: relative;
+      top:0;
+      left: 0;
+      margin: 2% 0;
+  }
+
 
 /*------------------- SECTION HEADER TEXT ------------------------*/
 section {
     margin: 5% auto;
+    
 }
 
-section .customHeader h1{
-    font-size: 150;
+.customHeader h1{
+    padding: 5% 0;
+    font-size: xx-large;
+    width: 45%;
 }
 
-section .customHeader h2{
-    font-size: 40;
+.customHeader h2{
+    /* font-size: 40; */
 }
 
-section .customHeader h3{
-    font-size: 30;
+.customHeader h3{
+    /* font-size: 30; */
 
 }
-section .customHeader h5{
-    font-size: 25;
+.customHeader h5{
+    font-size: large;
+    width:60%;
 }
 
 /*------------------- SECTION TABLE ------------------------*/
 
 .meals-grid-container{
     display:grid;
-    grid-template-columns: 1fr 1fr 2fr 2fr;
+    grid-template-columns: 1fr 1fr 2fr;
     grid-template-rows: auto;
     row-gap: 15px;
     column-gap: 15px;
+    margin-right: 1%;
 }
 
 .meals-grid-item-header{
-    background: rgb(255,255,255,70%);
+    background: rgb(255,255,255);
     border-radius: 8px;
     padding:2%;
     text-align: center;
@@ -70,3 +134,31 @@ section .customHeader h5{
     text-align: center;
 
 }
+
+
+/*------------------- END SECTION TABLE ------------------------*/
+
+
+/*------------------- FOOTER ----------------------------------*/
+
+footer {
+    width:100%;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    line-height:110%;    
+    position:fixed;
+    left:0;
+    bottom: 0;
+
+    
+}
+
+footer .text-center{
+    text-align: center;
+}
+
+
+/*------------------- END FOOTER ------------------------------*/
+
+

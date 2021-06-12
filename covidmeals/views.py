@@ -81,5 +81,5 @@ def getServiceData(request):
         print("New service provider has been added!")
     return render(request, "covidmeals/mealForm.html")
 
-def filterMealsInfo(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+def showComingSoon(request):
+    return render(request, "covidmeals/about.html")

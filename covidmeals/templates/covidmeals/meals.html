@@ -5,32 +5,31 @@
 		<link rel="stylesheet" type= "text/css" href= "{% static '/css/styles.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<script>
-
-		</script>
 	</head>
 	<title>Home</title>
 	<body style="margin: 5%;">
 		<nav>
 			<div id=navBar>
 				<a href="{% url 'covidmeals:meals' %}" style="background:rgba(255, 255, 255, 0.7); color: black;">Meals</a>
-				<a href="">Vaccination</a>
-				<a href="">Bed Allocation</a>
-                <span class="w3-xxlarge" style="background:none;"><a href="{% url 'covidmeals:index' %}"><i class="fa fa-home"></i></a></span>
+				<a href="/about">About Us</a>
+                <span class="w3-xxlarge"><a href="{% url 'covidmeals:index' %}" style="background:none;"><i class="fa fa-home"></i></a></span>
 			</div>
 		</nav>
 
 		<section id=filterBar>
             <form action="/meals/" method="GET">
-                <select id="idState" name='state'>
+                <select id="idState" name='state' style="margin-bottom: 1em;">
+					<option>State</option>
                     <option value="Karnataka">Karnataka</option>
                 </select>
-				<select id="idCity" name="city">
+				<select id="idCity" name="city" style="margin-bottom: 1em;">
+					<option>City</option>
                     <option value="Bangalore">Bangalore</option>
                 </select>
-				<select id="idArea" name="area">
-                </select>
-				<input type="submit" >
+				<select id="idArea" name="area" style="margin-bottom: 1em;">
+					<option>Area</option>
+                </select><br>
+				<input id="searchButton" type="submit" >
             </form>
 		</section>
 		<p>Do you want your meal service to feature on this list? Click <a href="{% url 'covidmeals:service-data' %}">here</a> to enter details</p>
@@ -39,7 +38,7 @@
             <div class="meals-grid-container">
 				<div class="meals-grid-item-header">Name</div>
 				<div class="meals-grid-item-header">Phone</div>
-				<div class="meals-grid-item-header">Address</div>
+				<!-- <div class="meals-grid-item-header">Address</div> -->
 				<div class="meals-grid-item-header">Description</div>
 				{{searchResults|json_script:"dataIn" }}
 				<script id="jsonParser" type="application/javascript">
@@ -47,7 +46,6 @@
 					var dataObj = document.querySelector(".meals-grid-container");
 					var strData = JSON.parse(document.querySelector('#dataIn').textContent);
 					var jsonData = JSON.parse(strData);
-
 					for(const item in jsonData){
 						
 						const divItemName =  document.createElement("div");
@@ -58,17 +56,17 @@
 						divItemPhone.setAttribute("class", "meals-grid-item");
 						divItemPhone.textContent = jsonData[item]["fields"]["phoneNumber"];
 
-						const divItemAddress =  document.createElement("div");
-						divItemAddress.setAttribute("class", "meals-grid-item");
-						divItemAddress.textContent = jsonData[item]["fields"]["address"];
+						// const divItemAddress =  document.createElement("div");
+						// divItemAddress.setAttribute("class", "meals-grid-item");
+						// divItemAddress.textContent = jsonData[item]["fields"]["address"];
 
 						const divItemDetails =  document.createElement("div");
-						divItemAddress.setAttribute("class", "meals-grid-item");
-						divItemAddress.textContent = jsonData[item]["fields"]["moreDetails"];
+						divItemDetails.setAttribute("class", "meals-grid-item");
+						divItemDetails.textContent = jsonData[item]["fields"]["moreDetails"];
 
 						dataObj.appendChild(divItemName);
 						dataObj.appendChild(divItemPhone);
-						dataObj.appendChild(divItemAddress);
+						// dataObj.appendChild(divItemAddress);
 						dataObj.appendChild(divItemDetails);
 
 					}
@@ -97,7 +95,10 @@
 				selectArea.appendChild(optiontag);
 			}
 		 </script>
-
+		<footer>
+			{% include 'covidmeals/footer.html' %}
+		</footer>
 	</body>
+	
 	
 </html>
