@@ -5,8 +5,13 @@
 		<link rel="stylesheet" type= "text/css" href= "{% static '/css/styles.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
 	</head>
 	<title>Home</title>
+	<header style="padding-bottom: 2%;">
+		<img src="../../../static/images/Asset 5.png">
+	</header>
 	<body style="margin: 5%;">
 		<nav>
 			<div id=navBar>
@@ -49,11 +54,11 @@
 					for(const item in jsonData){
 						
 						const divItemName =  document.createElement("div");
-						divItemName.setAttribute("class", "meals-grid-item");
+						divItemName.setAttribute("class", "meals-grid-item first");
 						divItemName.textContent = jsonData[item]["fields"]["name"];
 
 						const divItemPhone =  document.createElement("div");
-						divItemPhone.setAttribute("class", "meals-grid-item");
+						divItemPhone.setAttribute("class", "meals-grid-item second");
 						divItemPhone.textContent = jsonData[item]["fields"]["phoneNumber"];
 
 						// const divItemAddress =  document.createElement("div");
@@ -61,7 +66,7 @@
 						// divItemAddress.textContent = jsonData[item]["fields"]["address"];
 
 						const divItemDetails =  document.createElement("div");
-						divItemDetails.setAttribute("class", "meals-grid-item");
+						divItemDetails.setAttribute("class", "meals-grid-item third");
 						divItemDetails.textContent = jsonData[item]["fields"]["moreDetails"];
 
 						dataObj.appendChild(divItemName);

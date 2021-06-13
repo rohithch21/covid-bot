@@ -2,7 +2,8 @@ body {
     background: black;
     color: white;
     margin:5%;
-    height:100%;    
+    height:100%;  
+    font-family: 'Space Grotesk', sans-serif;  
 }
 /*------------------- HEADER BAR ---------------------------*/
 
@@ -18,15 +19,12 @@ body {
 #navBar a:hover{
     background:  rgb(112,128,144,70%);
 }
-nav span a {
+nav span a{
     position: absolute;
     right: 5%;
-    top: 10%;
+    top: 5%;
   }
 
-  @media screen and (max-width:480){
-
-  }
 
   /*------------------- SECTION FILTER SELECTS ------------------------*/
 
@@ -85,6 +83,7 @@ select, input[type="text"], input[type="tel"] {
 /*------------------- SECTION HEADER TEXT ------------------------*/
 section {
     margin: 5% auto;
+    font-family: 'Space Grotesk', sans-serif;
     
 }
 
@@ -105,6 +104,17 @@ section {
 .customHeader h5{
     font-size: large;
     width:60%;
+}
+@media (max-width:600px){
+    .customHeader h1{
+        padding: 5% 0;
+        font-size: xx-large;
+        width: 50%;
+    }
+    .customHeader h5{
+        font-size: medium;
+        width:80%;
+    }
 }
 
 /*------------------- SECTION TABLE ------------------------*/
@@ -135,6 +145,52 @@ section {
 
 }
 
+@media (max-width:600px){
+
+    .meals-grid-item-header{
+        /* background: rgb(255,255,255);
+        border-radius: 8px;
+        padding:2%;
+        text-align: center;
+        color: black; */
+        display:none;
+    }
+    .meals-grid-container{
+        display:flex;
+        flex-direction: column;
+        /* background: rgb(255,255,255); */
+        /* border-radius: 5px; */
+        margin: 5%;
+        row-gap: 0;
+        /* grid-template-columns: auto;
+        grid-template-rows: 1fr 1fr 2fr; */
+        /* row-gap: 15px;
+        column-gap: 15px; */
+        /* margin-right: 1%; */
+    }
+    .meals-grid-item{
+        width:100%;
+        background: rgb(112,128,144,50%);
+        border-radius: 0;
+        padding:10%;
+        text-align: center;
+    
+    }
+    .meals-grid-item.first{
+        background: #848484;    
+    
+    }
+    .meals-grid-item.second{
+        background: #6d6d6d;
+        
+    }
+    .meals-grid-item.third{
+        background: #424242;
+        margin-bottom: 20px;
+    
+    }
+}
+
 
 /*------------------- END SECTION TABLE ------------------------*/
 
@@ -161,4 +217,6 @@ footer .text-center{
 
 /*------------------- END FOOTER ------------------------------*/
 
-
+div {
+    font-family: 'Space Grotesk', sans-serif;
+}
