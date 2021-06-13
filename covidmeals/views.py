@@ -1,3 +1,5 @@
+from abc import abstractproperty
+from posixpath import abspath
 from django.db.models.fields import NullBooleanField
 from django.db.models.query import EmptyQuerySet
 from django.shortcuts import render, redirect
@@ -8,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 import json
 from django.core import serializers
+import os
 
 
 # Create your views here.
@@ -81,5 +84,24 @@ def getServiceData(request):
         print("New service provider has been added!")
     return render(request, "covidmeals/mealForm.html")
 
+@csrf_exempt
 def showComingSoon(request):
+    '''
+    read userfeedback json daya
+    convert it into dict
+    update thanks parameter
+    add the user feedback into the feedbacks array if any
+    '''
+    if request.method == 'POST':
+        feedback = request.POST.get('feedback','')
+        abspath = os.path.dirname(__file__)
+        relPath = os.path.join(abspath,"../static/json/userFeedback.json")
+        f = open(relPath)
+        data = json.load(f)
+        f.close()
+        data["thanks"] += 1
+        if feedback != "":
+            data["feedback"].append(feedback)
+        with open(relPath, 'w') as f:
+            json.dump(data,f)
     return render(request, "covidmeals/about.html")
