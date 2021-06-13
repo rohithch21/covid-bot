@@ -16,6 +16,12 @@
 			</div>
 		</nav>
         <h1 style="font-size: xx-large; position: fixed; top: 50%; right: 50%;">Coming Soon!</h1>
+		<p>If our service helped you, kindly let us know by clicking the Thank Us button!</p>
+		<form action="/about/" method="post" target="_self">
+			{%csrf_token%}
+			<input type="submit" value="Thanks Us">
+			<textarea name="feedback"></textarea>
+		</form>
         <footer>
             {% include 'covidmeals/footer.html' %}
         </footer>
