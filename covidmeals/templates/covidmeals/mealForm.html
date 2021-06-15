@@ -43,7 +43,6 @@
                 <h2 style="padding-bottom: 10px;">Where are you put up?*</h2>
                 <select id="idState" name="states" form="mealsForm" required>
                     <option>State</option>
-                    <option value="Karnataka">Karnataka</option>
                 </select><br><br>
                 <!-- <label for="city">City : </label> -->
                 <select id="idCity" name="city" form="mealsForm" required>
@@ -60,28 +59,27 @@
             <div class="form2">
                 <h2>Food Services offered</h2>
                 <input type="checkbox" value="Breakfast" name="breakfast">
-                <label for="breakfast">&nbsp;Breakfast</label><br><br>
+                <label for="breakfast">&nbsp;Breakfast</label>&nbsp;&nbsp;&nbsp;
                 <input type="checkbox" value="Lunch" name="lunch">
-                <label for="lunch">&nbsp;Lunch</label> <br><br>
+                <label for="lunch">&nbsp;Lunch</label>&nbsp;&nbsp;&nbsp;
                 <input type="checkbox" value="Dinner" name="dinner">
                 <label for="breakfast">&nbsp;Dinner</label> <br><br>
 
                 <h2>Food options available</h2>
-                <input type="checkbox" value="V" name="veg">
-                <label for="veg">&nbsp;Veg</label> &nbsp; &nbsp;&nbsp;
-                <input type="checkbox" value="N" name="nonveg">
-                <label for="nonveg">&nbsp;Non Veg</label> &nbsp; &nbsp;&nbsp;
-                <input type="checkbox" value="B" name="both">
+                <input type="radio" value="V" name="foodtype">
+                <label for="veg">&nbsp;Veg</label><br>
+                <input type="radio" value="N" name="foodtype">
+                <label for="nonveg">&nbsp;Non Veg</label><br>
+                <input type="radio" value="B" name="foodtype">
                 <label for="both">&nbsp;Custom Preparation</label>
                 <p>Kindly provide additional details for custom prepartion if any below.</p> <br>
                 <p>Select whichever is applicable</p>
-                <input type="checkbox" value="F" name="free">
-                <label for="free">&nbsp;Free</label> <br><br>
-                <input type="checkbox" value="P" name="paid">
+                <input type="radio" value="F" name="pricing">
+                <label for="free">&nbsp;Free</label> <br>
+                <input type="radio" value="P" name="pricing">
                 <label for="paid">&nbsp;Paid</label>
-                <p> If paid service, provide necessary details below</p>
-
-                
+                <p> If paid service, provide necessary details below</p><br>
+               
             </div>
             <div class="form3">
                 <textarea name="address" placeholder="Provide your address here .." rows=4 cols=50 ></textarea>
@@ -92,7 +90,8 @@
             <input type="submit" value="Submit" style="padding: 0 2%; background-color: azure; margin-top: 2em; ">
             
         </form>
-        <p style="padding-bottom: 5%;">Note - I you wish to update your details, please write to us via email. The contact information be found in the About Us page.</p>
+        <p style="padding-bottom: 5%;">Note - If you wish to update your details, please write to us via email. The contact information can be found in the About Us page.</p>
+        <script src="{% static '/js/get_states.js' %}"></script>
         <script>
 			var areas = {
     "Bangalore": ["Agrahara", "AGS layout", "Akshayanagar", "Akshaynagar", "Ali Askar Road", "Allalasandra", "Amrutahalli ", "Anandnagar", "Anekal", "Ashwath Nagar", "Attiguppe", "Austin Town", "Babusapalya", "Bagalgunte", "Bagalur", "Banashankari", "Banaswadi", "Bangalore South", "Bannerghatta", "Basavanagudi", "Basaveshvaranagar", "Basveshwanagar", "Begur", "BEL", "Bellandur", "Benson Town", "Bhoopasandra", "Bilekahalli", "Bilishivale", "Binnypet", "Bommanahalli", "Borewell road", "Borewell Road", "Brookefield ", "BTM Layout", "Budigere", "Carmelaram", "Central Bangalore", "Chanasandhra", "Chandra Layout", "Chikkabanavara", "Chikkabellandur", "Chikkalasandra", "Chodarapalya", "Cooke Town", "Cox Town", "Cunningham road", "CV Raman Nagar", "Deepanjalinagar", "Devarachikanahalli", "Devasandra", "Diamond district", "Doddakallasandra", "Dodsworth Layout", "Dollars Colony", "Domlur", "ECC road", "Ejipura", "Electronic City", "Fraser Town", "Ganganagar", "Geddalahalli", "Girinagar", "Gokula Extension", "Goripalya", "Gottigere", "Gunjur", "Hadosiddapura", "HAL", "Hanumanthnagar", "Hapinagar", "Haralur Road", "HBR layout", "Hebbal", "Hennur", "Hongasandra", "Hoodi", "Hope Farm", "Horamavu", "Hosa Road", "Hosakerehalli", "Hosakerihall", "Hoskerehalli", "Hoskote", "Hosur", "HRBR Layout", "HSR Layout", "Hulimavu", "Immidahalli", "Indiranagar", "ITPL", "Ittamadu", "Jakkur", "Jalahalli", "Jayanagar", "Jeevanbheema Nagar", "JP Nagar", "Kadubeesanahalli", "Kadugodi", "Kagadaspura", "Kaggadasapura", "Kaggalipura", "Kalena", "Kalkere", "Kalyan Nagar", "Kammanahalli", "Kanakapura Road", "Kasturinagar", "Kathriguppe", "Kavalbyrasandra", "Kempapura", "Kengeri", "Kodathi", "Kodigehalli", "Kogilu", "Konankunte Cross", "Koramangala", "KR Puram", "Kudlu Gate", "Kumara Park", "Kumara Park West", "Kumara Swami Layout", "Kumaraswamy Layout", "Kumbalgodu", "Kundalahalli", "Kuvempunagar", "Lingarajpuram", "Madiwala", "Magadi Road", "Mahadevapura", "Mahalakshmi Layout", "Mahalakshmi layout", "Malagala", "Mallathalli", "Malleshpalya", "Malleswaram", "Manyata Tech Park", "Marathahalli", "Maruthi Sevanagar", "Mathikere", "Millers Road", "Moodalpalya", "MS Palya", "Mudalpalya", "Munnekolala", "Murgeshpalya", "Mysore Road", "Nagadevanahalli", "Nagarbhavi", "Nagawara", "Nandi Durga Road", "Nandini Layout", "Nayandahalli", "Nelurhalli", "New BEL Road", "New Thippasandra", "Nimbekaipura", "North Bangalore", "NR Colony", "NRI Layout", "Nyanappanhalli", "Old Airport Road", "Old Madras Road", "Panathur", "Peenya", "Prashant Layout", "Prashant Nagar", "Prashanth layout", "Prashanth Layout", "Raghuvanahalli", "Rajaji Nagar", "Rajajinagar", "Rajarajeshwari Nagar", "Ramamurthy Nagar", "Richardstown", "Richmond Road", "RMV Extension", "RMV II Stage", "RPC Layout", "RT Nagar", "Sadashiv Nagar", "Sadashivnagar", "Sahakarnagar", "Sarakki", "Sarjapur", "Seegahalli", "Seegehalli", "Seshadaripuram", "Shanthivana", "Silkboard", "Singapura", "Singasandra", "South Bangalore", "Sultanpalya", "Tavarekere", "TC Palya", "Thanisandra", "Thindlu", "Thippasandra", "Tin factory", "Tyagarajanagar", "Ulsoor", "Uttarahalli", "Varthur", "Vasanth Nagar", "Vasanthapura", "Vasanthnagar", "Vidyaranyapura", "Vignan Nagar", "Vijaya Bank Layout", "Vijaynagar", "Vishwapriya layout", "VV Puram ", "Vyalikaval Layout", "Whitefield", "Wilson Garden", "Yelahanka", "Yellachanahalli", "Yeshwantpur"
