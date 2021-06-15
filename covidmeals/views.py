@@ -49,35 +49,39 @@ def getServiceData(request):
         nameOfState = request.POST['states']
         nameOfCiy = request.POST['city']
         namOfArea = request.POST['area']
-        meals = ""
+        meals = "Meals : "
         emailid=""
         if request.POST.get('breakfast'):
             meals = request.POST.get('breakfast')
         if request.POST.get("lunch"):
-            meals = meals + "," + request.POST.get('lunch')
+            meals = meals + " " + request.POST.get('lunch')
         if request.POST.get('dinner'):
-            meals = meals + "," + request.POST.get('dinner')
+            meals = meals + " " + request.POST.get('dinner')
         address = request.POST.get('address')
         if request.POST.get('Email'):
             emailid = request.POST.get("Email")
         signupDate = datetime.date.today()
         status = "A"
-        cost = None
-        if request.POST.get('free'):
-            cost = request.POST.get('free')
-        elif request.POST.get('paid'):
-            cost = request.POST.get('paid')
+        cost = request.POST.get('pricing' , "")
+        costDet = "Pricing : "
+        if cost == 'F':
+            costDet = costDet + "Free"
+        elif cost == 'P':
+            costDet = costDet + "Paid"
 
-        if(not request.POST.get('veg')):
-            if(not request.POST.get('nonveg')):  
+        foodType = ""
+        if(request.POST.get('foodtype') != "veg"):
+            if(request.POST.get('foodtype') != "nonveg"):  
                 food = "B"
             else:
                 food='N'
+                foodType= "Non Veg"
         else:
             food='V'
+            foodType = "Veg"
 
         
-        details = request.POST.get('addDetailsName') + "\n" + meals + "\n"
+        details = request.POST.get('addDetailsName') + ", " + meals + ", " + costDet + ", " + foodType
 
         record = MealService(name=name, phoneNumber=phoneNumber, email=emailid, address=address, signUpDate=signupDate, geoState=nameOfState, geoCity=nameOfCiy, geoLocation=namOfArea, mealsServed=meals, foodType=food, cost=cost, serviceStatus=status,moreDetails=details)
         record.save()
