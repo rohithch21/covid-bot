@@ -49,7 +49,7 @@ def getServiceData(request):
         nameOfState = request.POST['states']
         nameOfCiy = request.POST['city']
         namOfArea = request.POST['area']
-        meals = "Meals : "
+        meals = ""
         emailid=""
         if request.POST.get('breakfast'):
             meals = request.POST.get('breakfast')
@@ -81,7 +81,7 @@ def getServiceData(request):
             foodType = "Veg"
 
         
-        details = request.POST.get('addDetailsName') + ", " + meals + ", " + costDet + ", " + foodType
+        details = request.POST.get('addDetailsName') + " \n" + meals + " \n" + costDet + " \n" + foodType
 
         record = MealService(name=name, phoneNumber=phoneNumber, email=emailid, address=address, signUpDate=signupDate, geoState=nameOfState, geoCity=nameOfCiy, geoLocation=namOfArea, mealsServed=meals, foodType=food, cost=cost, serviceStatus=status,moreDetails=details)
         record.save()

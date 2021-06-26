@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	</head>
 	<title>Home</title>
+	<header style="padding-bottom: 2%;">
+		<img src="../../../static/images/Asset 5.png">
+	</header>
 	<body style="margin: 5%;">
 		<nav>
 			<div id=navBar>
@@ -15,13 +18,49 @@
                 <span class="w3-xxlarge"><a href="{% url 'covidmeals:index' %}" style="background:none;"><i class="fa fa-home"></i></a></span>
 			</div>
 		</nav>
-        <h1 style="font-size: xx-large; position: fixed; top: 50%; right: 50%;">Coming Soon!</h1>
-		<p>If our service helped you, kindly let us know by clicking the Thank Us button!</p>
-		<!-- <form action="/about/" method="post" target="_self">
-			{%csrf_token%}
-			<input type="submit" value="Thanks Us">
-			<textarea name="feedback"></textarea>
-		</form> -->
+		<div class="main-body">
+			<div class="first-half">
+				<p>COVIDbot was made in solidarity with families affected by COVID-19.
+					We discovered that a lot of people in our city, who have tested positive for COVID-19 have struggled to prepare meals for 
+					themselves. 
+					Our belief is simple. Everyone should have access to information in a convenient place at times of need. 
+					We decided to put our skills to practice and build a solution. We created COVIDbot to connect meal service providers to people 
+					who want meals delivered to their homes.
+					We, however, know that COVIDbot’s capabilities don’t end here. 
+					We’re building a comprehensive and real time information platform to go with the covid meals initiative to make COVIDbot a 
+					thorough tool for people who want vaccination info, Hospital Bed availability and other information.
+					We request you to help get the word and make COVIDbot reach those who need it.
+					</p>
+			</div>
+			<!-- <div> -->
+				<!-- <h1 style="font-size: xx-large; position: fixed; top: 50%; right: 50%;">Coming Soon!</h1> -->
+				<!-- <p>If our service helped you, kindly let us know by clicking the Thank Us button!</p>
+				<form action="/about/" method="post" target="_self">
+					{%csrf_token%}
+					<input type="submit" value="Thanks Us">
+					<textarea name="feedback"></textarea>
+				</form> -->
+			<!-- </div> -->
+			<div class="second-half">
+				<div class="reusable_credits">
+					<!-- <span class="circle"></span> -->
+					<span class=nametag-border>Rohith C H<br>Software Developer at SAP Labs<br>Site Developer/Maintainer</span>
+				</div>
+				<div class="reusable_credits">
+					<!-- <span class="circle"></span> -->
+					<span class=nametag-border>Sharath Nair<br>BBA Graduate, Law<br>Site Point of Contact/Maintainer</span>
+					<div>
+					<!-- <img src="{% static '/images/thumbsup.png' %}"> -->
+					</div>
+				</div>
+				<img src="{% static '/images/sharath_qr.png'%}">
+				<p>Kindly scan this QR code on a UPI app to help support us.
+					Your support will help us keep this platform running. Cheers! </p>
+					<div class="reusable_credits">
+						<span class=nametag-border>To reach us, send an email to hello.covidbot@gmail.com</span>
+					</div>
+			</div>
+		</div>
         <footer>
             {% include 'covidmeals/footer.html' %}
         </footer>
