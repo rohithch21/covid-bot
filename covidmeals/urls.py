@@ -8,6 +8,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('meals/', views.meals, name='meals'),
     path('mealForm/', views.getServiceData, name='service-data'),
-    path('about/', views.showComingSoon, name='coming-soon'),
+    path('about/', views.showComingSoon, name='aboutus'),
 
 ]
