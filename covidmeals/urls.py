@@ -9,5 +9,6 @@ urlpatterns = [
     path('meals/', views.meals, name='meals'),
     path('mealForm/', views.getServiceData, name='service-data'),
     path('about/', views.showComingSoon, name='aboutus'),
+    path('vaccination/', views.viewVaccinePage, name='vaccine-page'),
 
 ]

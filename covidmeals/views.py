@@ -109,3 +109,6 @@ def showComingSoon(request):
         with open(relPath, 'w') as f:
             json.dump(data,f)
     return render(request, "covidmeals/about.html")
+
+def viewVaccinePage(request):
+    return render(request, 'covidmeals/vaccine.html')
