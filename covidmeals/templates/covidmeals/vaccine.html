@@ -1,0 +1,22 @@
+{%  load static %}
+<!DOCTYPE html>
+	<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type= "text/css" href= "{% static '/css/styles.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+	<title>Vaccination</title>
+	<header style="padding-bottom: 2%;">
+		<img src="../../../static/images/Asset 5.png">
+	</header>
+	<body style="margin: 5%;">
+		<nav>
+			<div id=navBar>
+				<a href="{% url 'covidmeals:meals' %}" style="background:rgba(255, 255, 255, 0.7); color: black;">Meals</a>
+				<a href="/about">About Us</a>
+                <span class="w3-xxlarge"><a href="{% url 'covidmeals:index' %}" style="background:none;"><i class="fa fa-home"></i></a></span>
+			</div>
+		</nav>
+        <h1 style="font-size: xx-large; position: fixed; top: 50%; right: 50%;">Coming Soon!</h1>
+    </body>
