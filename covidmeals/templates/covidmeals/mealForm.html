@@ -31,7 +31,7 @@
             <div class="form1">
                 <!-- <label for="Name">Name : </label> -->
                 <p>Enter your Name*</p>
-                <input name="Name" type="text" placeholder="Name" required> <br><br>
+                <input name="Name" type="text" placeholder="Name" maxlength="100" required> <br><br>
                 <!-- <label for="Email">Email : </label> -->
                 <p>Enter your Email ID</p>
                 <input name="Email" type="text" placeholder="Email ID"> <br><br>
@@ -82,9 +82,11 @@
                
             </div>
             <div class="form3">
-                <textarea name="address" placeholder="Provide your address here .." rows=4 cols=50 ></textarea>
+                <textarea name="address" maxlength="250" placeholder="Provide your address here .." rows=4 cols=50 ></textarea>
                 <p>Add all the necessary additiona details here</p>
                 <textarea name="addDetailsName" placeholder="Any additional details ..." rows=6 cols=50></textarea>
+                <p>Delivery Services</p>
+                <textarea name="deliveryDetails" placeholder="Delivery options available ..." rows=6 cols=50></textarea>
             </div>
             
             <input type="submit" value="Submit" style="padding: 0 2%; background-color: azure; margin-top: 2em; ">
@@ -92,23 +94,25 @@
         </form>
         <p style="padding-bottom: 5%;">Note - If you wish to update your details, please write to us via email. The contact information can be found in the About Us page.</p>
         <script src="{% static '/js/get_states.js' %}"></script>
-        <script>
-			var areas = {
-    "Bangalore": ["Agrahara", "AGS layout", "Akshayanagar", "Akshaynagar", "Ali Askar Road", "Allalasandra", "Amrutahalli ", "Anandnagar", "Anekal", "Ashwath Nagar", "Attiguppe", "Austin Town", "Babusapalya", "Bagalgunte", "Bagalur", "Banashankari", "Banaswadi", "Bangalore South", "Bannerghatta", "Basavanagudi", "Basaveshvaranagar", "Basveshwanagar", "Begur", "BEL", "Bellandur", "Benson Town", "Bhoopasandra", "Bilekahalli", "Bilishivale", "Binnypet", "Bommanahalli", "Borewell road", "Borewell Road", "Brookefield ", "BTM Layout", "Budigere", "Carmelaram", "Central Bangalore", "Chanasandhra", "Chandra Layout", "Chikkabanavara", "Chikkabellandur", "Chikkalasandra", "Chodarapalya", "Cooke Town", "Cox Town", "Cunningham road", "CV Raman Nagar", "Deepanjalinagar", "Devarachikanahalli", "Devasandra", "Diamond district", "Doddakallasandra", "Dodsworth Layout", "Dollars Colony", "Domlur", "ECC road", "Ejipura", "Electronic City", "Fraser Town", "Ganganagar", "Geddalahalli", "Girinagar", "Gokula Extension", "Goripalya", "Gottigere", "Gunjur", "Hadosiddapura", "HAL", "Hanumanthnagar", "Hapinagar", "Haralur Road", "HBR layout", "Hebbal", "Hennur", "Hongasandra", "Hoodi", "Hope Farm", "Horamavu", "Hosa Road", "Hosakerehalli", "Hosakerihall", "Hoskerehalli", "Hoskote", "Hosur", "HRBR Layout", "HSR Layout", "Hulimavu", "Immidahalli", "Indiranagar", "ITPL", "Ittamadu", "Jakkur", "Jalahalli", "Jayanagar", "Jeevanbheema Nagar", "JP Nagar", "Kadubeesanahalli", "Kadugodi", "Kagadaspura", "Kaggadasapura", "Kaggalipura", "Kalena", "Kalkere", "Kalyan Nagar", "Kammanahalli", "Kanakapura Road", "Kasturinagar", "Kathriguppe", "Kavalbyrasandra", "Kempapura", "Kengeri", "Kodathi", "Kodigehalli", "Kogilu", "Konankunte Cross", "Koramangala", "KR Puram", "Kudlu Gate", "Kumara Park", "Kumara Park West", "Kumara Swami Layout", "Kumaraswamy Layout", "Kumbalgodu", "Kundalahalli", "Kuvempunagar", "Lingarajpuram", "Madiwala", "Magadi Road", "Mahadevapura", "Mahalakshmi Layout", "Mahalakshmi layout", "Malagala", "Mallathalli", "Malleshpalya", "Malleswaram", "Manyata Tech Park", "Marathahalli", "Maruthi Sevanagar", "Mathikere", "Millers Road", "Moodalpalya", "MS Palya", "Mudalpalya", "Munnekolala", "Murgeshpalya", "Mysore Road", "Nagadevanahalli", "Nagarbhavi", "Nagawara", "Nandi Durga Road", "Nandini Layout", "Nayandahalli", "Nelurhalli", "New BEL Road", "New Thippasandra", "Nimbekaipura", "North Bangalore", "NR Colony", "NRI Layout", "Nyanappanhalli", "Old Airport Road", "Old Madras Road", "Panathur", "Peenya", "Prashant Layout", "Prashant Nagar", "Prashanth layout", "Prashanth Layout", "Raghuvanahalli", "Rajaji Nagar", "Rajajinagar", "Rajarajeshwari Nagar", "Ramamurthy Nagar", "Richardstown", "Richmond Road", "RMV Extension", "RMV II Stage", "RPC Layout", "RT Nagar", "Sadashiv Nagar", "Sadashivnagar", "Sahakarnagar", "Sarakki", "Sarjapur", "Seegahalli", "Seegehalli", "Seshadaripuram", "Shanthivana", "Silkboard", "Singapura", "Singasandra", "South Bangalore", "Sultanpalya", "Tavarekere", "TC Palya", "Thanisandra", "Thindlu", "Thippasandra", "Tin factory", "Tyagarajanagar", "Ulsoor", "Uttarahalli", "Varthur", "Vasanth Nagar", "Vasanthapura", "Vasanthnagar", "Vidyaranyapura", "Vignan Nagar", "Vijaya Bank Layout", "Vijaynagar", "Vishwapriya layout", "VV Puram ", "Vyalikaval Layout", "Whitefield", "Wilson Garden", "Yelahanka", "Yellachanahalli", "Yeshwantpur"
-    ]
-}
-			// var jsonObj = JSON.parse(areas); // try to import the local josn data
-			var jsonObj = areas;
- 			var allArea = jsonObj["Bangalore"];
-			var selectArea = document.querySelector("#idArea");
+		 <script>
+			var stateTag = document.querySelector("#idState");
 
-			for(var i=0; i < allArea.length; i++){
-				const optiontag = document.createElement("option");
-				optiontag.setAttribute("value",allArea[i]);
-				optiontag.textContent=allArea[i];
-				selectArea.appendChild(optiontag);
+			function getCitiesFn(){
+				var scriptTag = document.createElement("script");
+				scriptTag.setAttribute("src","{% static '/js/getCities.js' %}");
+				document.body.appendChild(scriptTag);
 			}
-		 </script>
+			stateTag.addEventListener('change', getCitiesFn);
+		</script>
+		<script>
+			var cityTag = document.querySelector("#idCity");
+			function getLocalitiesFn(){
+				var scriptTag2 = document.createElement("script");
+				scriptTag2.setAttribute("src","{% static '/js/getAreas.js' %}");
+				document.body.appendChild(scriptTag2);
+			}
+			cityTag.addEventListener('change', getLocalitiesFn);
+		</script>
     </body>
     <footer>
         {% include 'covidmeals/footer.html' %}

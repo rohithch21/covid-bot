@@ -158,15 +158,8 @@ section {
     .meals-grid-container{
         display:flex;
         flex-direction: column;
-        /* background: rgb(255,255,255); */
-        /* border-radius: 5px; */
         margin: 5%;
         row-gap: 0;
-        /* grid-template-columns: auto;
-        grid-template-rows: 1fr 1fr 2fr; */
-        /* row-gap: 15px;
-        column-gap: 15px; */
-        /* margin-right: 1%; */
     }
     .meals-grid-item{
         width:100%;
@@ -189,11 +182,50 @@ section {
         margin-bottom: 20px;
     
     }
+    .meals-grid-item.fourth{
+        background: rgb(59, 59, 59);
+        margin-bottom: 20px;
+    }
 }
 
 
 /*------------------- END SECTION TABLE ------------------------*/
 
+
+/*------------------- ABOUT US PAGE ----------------------------------*/
+ .main-body{
+    display:block;
+    /* grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    row-gap: 15px;
+    column-gap: 15px; */
+}
+@media (max-width:600px){
+    
+}
+
+.main-body .first-half, .main-body .second-half{
+    background: rgba(0, 0, 0);
+    border-radius: 8px;
+    padding:0%;
+    text-align: center;
+    color: white;
+    margin: 10% 0;
+    
+
+}
+
+.reusable_credits{
+    background: rgba(30, 33, 48,100%);
+    margin: 2%;
+}
+
+.nametag_border{
+    border-radius: 3px;
+}
+
+
+/*------------------- ABOUT US END ----------------------------------*/
 
 /*------------------- FOOTER ----------------------------------*/
 

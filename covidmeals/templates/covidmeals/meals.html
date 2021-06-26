@@ -16,6 +16,7 @@
 		<nav>
 			<div id=navBar>
 				<a href="{% url 'covidmeals:meals' %}" style="background:rgba(255, 255, 255, 0.7); color: black;">Meals</a>
+				<a href="{% url 'covidmeals:service-data' %}">Add Meal Service</a>
 				<a href="/about">About Us</a>
                 <span class="w3-xxlarge"><a href="{% url 'covidmeals:index' %}" style="background:none;"><i class="fa fa-home"></i></a></span>
 			</div>
@@ -28,7 +29,6 @@
                 </select>
 				<select id="idCity" name="city" style="margin-bottom: 1em;">
 					<option>City</option>
-                    <option value="Bangalore">Bangalore</option>
                 </select>
 				<select id="idArea" name="area" style="margin-bottom: 1em;">
 					<option>Area</option>
@@ -44,6 +44,7 @@
 				<div class="meals-grid-item-header">Phone</div>
 				<!-- <div class="meals-grid-item-header">Address</div> -->
 				<div class="meals-grid-item-header">Description</div>
+				<!-- <div class="meals-grid-item-header">Delivery</div> -->
 				{{searchResults|json_script:"dataIn" }}
 				<script id="jsonParser" type="application/javascript">
 					// code to get info table data from db and inject data on screen
@@ -60,44 +61,45 @@
 						divItemPhone.setAttribute("class", "meals-grid-item second");
 						divItemPhone.textContent = jsonData[item]["fields"]["phoneNumber"];
 
-						// const divItemAddress =  document.createElement("div");
-						// divItemAddress.setAttribute("class", "meals-grid-item");
-						// divItemAddress.textContent = jsonData[item]["fields"]["address"];
-
 						const divItemDetails =  document.createElement("div");
 						divItemDetails.setAttribute("class", "meals-grid-item third");
 						divItemDetails.textContent = jsonData[item]["fields"]["moreDetails"];
 
+						// const divDelivDetails =  document.createElement("div");
+						// divDelivDetails.setAttribute("class", "meals-grid-item fourth");
+						// divDelivDetails.textContent = jsonData[item]["fields"]["deliveryDetails"];
+
 						dataObj.appendChild(divItemName);
 						dataObj.appendChild(divItemPhone);
-						// dataObj.appendChild(divItemAddress);
 						dataObj.appendChild(divItemDetails);
+						// dataObj.appendChild(divDelivDetails);
+
 
 					}
-
-
 				</script>
 
 			</div>
          </section>
 		 <script src="{% static '/js/get_states.js' %}"></script>
-		<script>
-			var areas = {
-    "Bangalore": ["Agrahara", "AGS layout", "Akshayanagar", "Akshaynagar", "Ali Askar Road", "Allalasandra", "Amrutahalli ", "Anandnagar", "Anekal", "Ashwath Nagar", "Attiguppe", "Austin Town", "Babusapalya", "Bagalgunte", "Bagalur", "Banashankari", "Banaswadi", "Bangalore South", "Bannerghatta", "Basavanagudi", "Basaveshvaranagar", "Basveshwanagar", "Begur", "BEL", "Bellandur", "Benson Town", "Bhoopasandra", "Bilekahalli", "Bilishivale", "Binnypet", "Bommanahalli", "Borewell road", "Borewell Road", "Brookefield ", "BTM Layout", "Budigere", "Carmelaram", "Central Bangalore", "Chanasandhra", "Chandra Layout", "Chikkabanavara", "Chikkabellandur", "Chikkalasandra", "Chodarapalya", "Cooke Town", "Cox Town", "Cunningham road", "CV Raman Nagar", "Deepanjalinagar", "Devarachikanahalli", "Devasandra", "Diamond district", "Doddakallasandra", "Dodsworth Layout", "Dollars Colony", "Domlur", "ECC road", "Ejipura", "Electronic City", "Fraser Town", "Ganganagar", "Geddalahalli", "Girinagar", "Gokula Extension", "Goripalya", "Gottigere", "Gunjur", "Hadosiddapura", "HAL", "Hanumanthnagar", "Hapinagar", "Haralur Road", "HBR layout", "Hebbal", "Hennur", "Hongasandra", "Hoodi", "Hope Farm", "Horamavu", "Hosa Road", "Hosakerehalli", "Hosakerihall", "Hoskerehalli", "Hoskote", "Hosur", "HRBR Layout", "HSR Layout", "Hulimavu", "Immidahalli", "Indiranagar", "ITPL", "Ittamadu", "Jakkur", "Jalahalli", "Jayanagar", "Jeevanbheema Nagar", "JP Nagar", "Kadubeesanahalli", "Kadugodi", "Kagadaspura", "Kaggadasapura", "Kaggalipura", "Kalena", "Kalkere", "Kalyan Nagar", "Kammanahalli", "Kanakapura Road", "Kasturinagar", "Kathriguppe", "Kavalbyrasandra", "Kempapura", "Kengeri", "Kodathi", "Kodigehalli", "Kogilu", "Konankunte Cross", "Koramangala", "KR Puram", "Kudlu Gate", "Kumara Park", "Kumara Park West", "Kumara Swami Layout", "Kumaraswamy Layout", "Kumbalgodu", "Kundalahalli", "Kuvempunagar", "Lingarajpuram", "Madiwala", "Magadi Road", "Mahadevapura", "Mahalakshmi Layout", "Mahalakshmi layout", "Malagala", "Mallathalli", "Malleshpalya", "Malleswaram", "Manyata Tech Park", "Marathahalli", "Maruthi Sevanagar", "Mathikere", "Millers Road", "Moodalpalya", "MS Palya", "Mudalpalya", "Munnekolala", "Murgeshpalya", "Mysore Road", "Nagadevanahalli", "Nagarbhavi", "Nagawara", "Nandi Durga Road", "Nandini Layout", "Nayandahalli", "Nelurhalli", "New BEL Road", "New Thippasandra", "Nimbekaipura", "North Bangalore", "NR Colony", "NRI Layout", "Nyanappanhalli", "Old Airport Road", "Old Madras Road", "Panathur", "Peenya", "Prashant Layout", "Prashant Nagar", "Prashanth layout", "Prashanth Layout", "Raghuvanahalli", "Rajaji Nagar", "Rajajinagar", "Rajarajeshwari Nagar", "Ramamurthy Nagar", "Richardstown", "Richmond Road", "RMV Extension", "RMV II Stage", "RPC Layout", "RT Nagar", "Sadashiv Nagar", "Sadashivnagar", "Sahakarnagar", "Sarakki", "Sarjapur", "Seegahalli", "Seegehalli", "Seshadaripuram", "Shanthivana", "Silkboard", "Singapura", "Singasandra", "South Bangalore", "Sultanpalya", "Tavarekere", "TC Palya", "Thanisandra", "Thindlu", "Thippasandra", "Tin factory", "Tyagarajanagar", "Ulsoor", "Uttarahalli", "Varthur", "Vasanth Nagar", "Vasanthapura", "Vasanthnagar", "Vidyaranyapura", "Vignan Nagar", "Vijaya Bank Layout", "Vijaynagar", "Vishwapriya layout", "VV Puram ", "Vyalikaval Layout", "Whitefield", "Wilson Garden", "Yelahanka", "Yellachanahalli", "Yeshwantpur"
-    ]
-}
-			// var jsonObj = JSON.parse(areas); // try to import the local josn data
-			var jsonObj = areas;
- 			var allArea = jsonObj["Bangalore"];
-			var selectArea = document.querySelector("#idArea");
+		 <script>
+			var stateTag = document.querySelector("#idState");
 
-			for(var i=0; i < allArea.length; i++){
-				const optiontag = document.createElement("option");
-				optiontag.setAttribute("value",allArea[i]);
-				optiontag.textContent=allArea[i];
-				selectArea.appendChild(optiontag);
+			function getCitiesFn(){
+				var scriptTag = document.createElement("script");
+				scriptTag.setAttribute("src","{% static '/js/getCities.js' %}");
+				document.body.appendChild(scriptTag);
 			}
-		 </script>
+			stateTag.addEventListener('change', getCitiesFn);
+		</script>
+		<script>
+			var cityTag = document.querySelector("#idCity");
+			function getLocalitiesFn(){
+				var scriptTag2 = document.createElement("script");
+				scriptTag2.setAttribute("src","{% static '/js/getAreas.js' %}");
+				document.body.appendChild(scriptTag2);
+			}
+			cityTag.addEventListener('change', getLocalitiesFn);
+		</script>
 		<footer>
 			{% include 'covidmeals/footer.html' %}
 		</footer>
