@@ -26,7 +26,7 @@ SECRET_KEY = '-s8f5k-o+y5avh2a9-e9j-xegj(9%%+8erkd=z4+@wd5u97^8t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["covid-bot-one.herokuapp.com", "127.0.0.1",]
+ALLOWED_HOSTS = ["covid-bot-one.herokuapp.com", "127.0.0.1","covidbot.live", "www.covidbot.live"]
 
 
 # Application definition
