@@ -1,6 +1,6 @@
 // import states from "../json/states.json"; //Json loading error
 
-states = ["Andhra Pradesh", "Arunachal Pradesh", "Bihar", "Delhi", "Gujarat", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Puducherry", "Rajasthan", "Tamil Nadu", "Telangana",  "Uttar Pradesh", "West Bengal"]
+states = ["Andhra Pradesh", "Arunachal Pradesh","Assam", "Bihar", "Chattisgarh", "Delhi","Daman and Diu","Goa", "Gujarat","Harayana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra","Meghalaya","Nagaland","Orissa", "Punjab", "Puducherry", "Rajasthan","Sikkim", "Tamil Nadu", "Telangana","Tripura",  "Uttar Pradesh","Uttarakhand", "West Bengal"]
 
 // var jsonStates = JSON.parse(states);
 

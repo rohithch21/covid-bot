@@ -10,5 +10,7 @@ urlpatterns = [
     path('mealForm/', views.getServiceData, name='service-data'),
     path('about/', views.showComingSoon, name='aboutus'),
     path('vaccination/', views.viewVaccinePage, name='vaccine-page'),
-
+    path('data/cities/', views.getCities, name='indian-cities'),
+    path('data/areas/', views.getLocalities, name='localities'),
+    path('data/tc/', views.viewTC, name='tc'),
 ]

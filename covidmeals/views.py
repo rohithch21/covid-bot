@@ -41,9 +41,7 @@ def meals(request):
 
 @csrf_exempt
 def getServiceData(request):
-    # print(request)
     if request.method == "POST":
-        print(request.POST)
         name = request.POST['Name']
         phoneNumber = request.POST['phone']
         nameOfState = request.POST['states']
@@ -91,7 +89,7 @@ def getServiceData(request):
 @csrf_exempt
 def showComingSoon(request):
     '''
-    read userfeedback json daya
+    read userfeedback json days
     convert it into dict
     update thanks parameter
     add the user feedback into the feedbacks array if any
@@ -112,3 +110,34 @@ def showComingSoon(request):
 
 def viewVaccinePage(request):
     return render(request, 'covidmeals/vaccine.html')
+
+@csrf_exempt
+def getCities(request):
+    # selectedState = request.GET.get("city")
+    abspath = os.path.dirname(__file__)
+    relPath = os.path.join(abspath,"../static/json/cities.json")
+    body = json.loads(request.body.decode("utf-8"))
+    selectedState = body.get("geoState")
+    cities = {}
+    with open(relPath, 'r') as f:
+        allcities = json.load(f)
+        result = allcities.get(selectedState)
+    cities = {selectedState : result}
+    return JsonResponse(cities)
+
+
+@csrf_exempt
+def getLocalities(request):
+    abspath = os.path.dirname(__file__)
+    relPath = os.path.join(abspath,"../static/json/localities.json")
+    body = json.loads(request.body.decode("utf-8"))
+    selectedCity = body.get("geoCity")
+    areas = {}
+    with open(relPath, 'r') as f:
+        allAreas = json.load(f)
+        result = allAreas.get(selectedCity)
+    cities = {selectedCity : result}
+    return JsonResponse(cities)
+
+def viewTC(request):
+    return render(request, 'covidmeals/tc.html')
