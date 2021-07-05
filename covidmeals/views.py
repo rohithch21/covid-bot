@@ -113,31 +113,35 @@ def viewVaccinePage(request):
 
 @csrf_exempt
 def getCities(request):
-    # selectedState = request.GET.get("city")
-    abspath = os.path.dirname(__file__)
-    relPath = os.path.join(abspath,"../static/json/cities.json")
-    body = json.loads(request.body.decode("utf-8"))
-    selectedState = body.get("geoState")
-    cities = {}
-    with open(relPath, 'r') as f:
-        allcities = json.load(f)
-        result = allcities.get(selectedState)
-    cities = {selectedState : result}
-    return JsonResponse(cities)
+    if request.method == "POST":
+        # selectedState = request.GET.get("city")
+        abspath = os.path.dirname(__file__)
+        relPath = os.path.join(abspath,"../static/json/cities.json")
+        body = json.loads(request.body.decode("utf-8"))
+        selectedState = body.get("geoState")
+        cities = {}
+        with open(relPath, 'r') as f:
+            allcities = json.load(f)
+            result = allcities.get(selectedState)
+        cities = {selectedState : result}
+        return JsonResponse(cities)
+    return JsonResponse({})
 
 
 @csrf_exempt
 def getLocalities(request):
-    abspath = os.path.dirname(__file__)
-    relPath = os.path.join(abspath,"../static/json/localities.json")
-    body = json.loads(request.body.decode("utf-8"))
-    selectedCity = body.get("geoCity")
-    areas = {}
-    with open(relPath, 'r') as f:
-        allAreas = json.load(f)
-        result = allAreas.get(selectedCity)
-    cities = {selectedCity : result}
-    return JsonResponse(cities)
+    if request.method == "POST":
+        abspath = os.path.dirname(__file__)
+        relPath = os.path.join(abspath,"../static/json/localities.json")
+        body = json.loads(request.body.decode("utf-8"))
+        selectedCity = body.get("geoCity")
+        areas = {}
+        with open(relPath, 'r') as f:
+            allAreas = json.load(f)
+            result = allAreas.get(selectedCity)
+        cities = {selectedCity : result}
+        return JsonResponse(cities)
+    return JsonResponse({})
 
 def viewTC(request):
     return render(request, 'covidmeals/tc.html')

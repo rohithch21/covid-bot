@@ -6,7 +6,7 @@ var selectedState = document.querySelector("#idState").value;
 var data = {"geoState" : selectedState}
 var fetchCities = fetch('https://covidbot.live/data/cities/', {
     method: 'POST',
-    mode: 'no-cors',
+    mode: 'same-origin',
     body : JSON.stringify(data),
     }) // ******** make this https ********
   .then(response => response.json())
