@@ -4,7 +4,7 @@ var selectArea = document.querySelector("#idArea");
 
 var data = {"geoCity" : selectedCity}
 
-var fetchCities = fetch('http://covidbot.live/data/areas/', {
+var fetchCities = fetch('https://covidbot.live/data/areas/', {
     method: 'POST',
     body : JSON.stringify(data),
     }) // ******** make this https ********
