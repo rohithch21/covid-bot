@@ -4,7 +4,7 @@
 
 var selectedState = document.querySelector("#idState").value;
 var data = {"geoState" : selectedState}
-var fetchCities = fetch('http://covidbot.live/data/cities/', {
+var fetchCities = fetch('https://covidbot.live/data/cities/', {
     method: 'POST',
     body : JSON.stringify(data),
     }) // ******** make this https ********
