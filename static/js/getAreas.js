@@ -4,7 +4,7 @@ var selectArea = document.querySelector("#idArea");
 
 var data = {"geoCity" : selectedCity}
 
-var fetchCities = fetch('/data/areas', {
+var fetchCities = fetch('/data/areas/', {
     mode: "cors",
     method: 'POST',
     body : JSON.stringify(data),
