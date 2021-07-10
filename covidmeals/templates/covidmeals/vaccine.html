@@ -5,6 +5,9 @@
 		<link rel="stylesheet" type= "text/css" href= "{% static '/css/styles.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script src="{% static '/js/vaccinator.js' %}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/core.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/sha256.js"></script>
     </head>
 	<title>Vaccination</title>
 	<header style="padding-bottom: 2%;">
@@ -18,5 +21,55 @@
                 <span class="w3-xxlarge"><a href="{% url 'covidmeals:index' %}" style="background:none;"><i class="fa fa-home"></i></a></span>
 			</div>
 		</nav>
-        <h1 style="font-size: xx-large; position: fixed; top: 50%; right: 50%;">Coming Soon!</h1>
+		<div id=byPincode>
+			<label>Enter your PIN Code: </label>
+			<input id="pincode" type="text">
+		</div>
+		<div id=byArea>
+			<label>State</label><br>
+			<select id="idState" name="states">
+				<option>State</option>
+			</select><br><br>
+			<label for="city">City</label><br>
+			<select id="idCity" name="city">
+				<option>City</option>
+			</select><br><br>				
+		</div>
+		<div>
+			<h3>Age Group</h2>
+			<input type="radio" value="YNG">
+			<label>18-44</label>
+			<input type="radio" value="OLD">
+			<label>45+</label>
+		</div>
+		<div>
+			<h3>Dose</h2>
+			<input type="radio" value="D1">
+			<label>Dose 1</label>
+			<input type="radio" value="D2">
+			<label>Dose 2</label>
+		</div>
+		<div id="idAuthenticate"> 
+			<div>
+				<label>Enter Phone Number: </label>
+				<input id="mobile" placeholder="+91">
+				<button onclick="generateOTP()">Enter</button>
+			</div>
+			<div id="idOTPBlock" style="display: none;">
+				<label>Enter the OTP here : </label>
+				<input id="otp">
+				<button onclick="confirmOTP()">Confirm</button>
+			</div>
+		</div>
+
+		<script>
+			var stateTag = document.querySelector("#idState");
+			getStatesCowinAPI();
+		</script>
+		<script>
+			var cityTag = document.querySelector("#idCity");
+			stateTag.addEventListener('change', getDistrictsCowinAPI)
+		</script>
+		
+        <!-- <h1 style="font-size: xx-large; position: fixed; top: 50%; right: 50%;">Coming Soon!</h1> -->
     </body>
