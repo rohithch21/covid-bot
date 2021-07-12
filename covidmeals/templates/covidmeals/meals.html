@@ -37,6 +37,7 @@
             </form>
 		</section>
 		<p>Do you want your meal service to feature on this list? Click <a href="{% url 'covidmeals:service-data' %}">here</a> to enter details</p>
+		<p>We kindly request you to forward this portal to all those you know who are currently providing this service.</p>
 		<!-- <script id="dataIn" type="application/json"></script> -->
          <section id=infotable>
             <div class="meals-grid-container">
@@ -50,31 +51,37 @@
 					// code to get info table data from db and inject data on screen
 					var dataObj = document.querySelector(".meals-grid-container");
 					var strData = JSON.parse(document.querySelector('#dataIn').textContent);
-					var jsonData = JSON.parse(strData);
-					for(const item in jsonData){
-						
-						const divItemName =  document.createElement("div");
-						divItemName.setAttribute("class", "meals-grid-item first");
-						divItemName.textContent = jsonData[item]["fields"]["name"];
+					var jsonData = JSON.parse(strData) || [];
+					var currUrl = window.location.href;
+					if(currUrl.includes("state") && jsonData.length == 0){
+						alert("No meals providers in this area.");
+					}
+					else{
+						for(const item in jsonData){
+							
+							const divItemName =  document.createElement("div");
+							divItemName.setAttribute("class", "meals-grid-item first");
+							divItemName.textContent = jsonData[item]["fields"]["name"];
 
-						const divItemPhone =  document.createElement("div");
-						divItemPhone.setAttribute("class", "meals-grid-item second");
-						divItemPhone.textContent = jsonData[item]["fields"]["phoneNumber"];
+							const divItemPhone =  document.createElement("div");
+							divItemPhone.setAttribute("class", "meals-grid-item second");
+							divItemPhone.textContent = jsonData[item]["fields"]["phoneNumber"];
 
-						const divItemDetails =  document.createElement("div");
-						divItemDetails.setAttribute("class", "meals-grid-item third");
-						divItemDetails.textContent = jsonData[item]["fields"]["moreDetails"];
+							const divItemDetails =  document.createElement("div");
+							divItemDetails.setAttribute("class", "meals-grid-item third");
+							divItemDetails.textContent = jsonData[item]["fields"]["moreDetails"];
 
-						// const divDelivDetails =  document.createElement("div");
-						// divDelivDetails.setAttribute("class", "meals-grid-item fourth");
-						// divDelivDetails.textContent = jsonData[item]["fields"]["deliveryDetails"];
+							// const divDelivDetails =  document.createElement("div");
+							// divDelivDetails.setAttribute("class", "meals-grid-item fourth");
+							// divDelivDetails.textContent = jsonData[item]["fields"]["deliveryDetails"];
 
-						dataObj.appendChild(divItemName);
-						dataObj.appendChild(divItemPhone);
-						dataObj.appendChild(divItemDetails);
-						// dataObj.appendChild(divDelivDetails);
+							dataObj.appendChild(divItemName);
+							dataObj.appendChild(divItemPhone);
+							dataObj.appendChild(divItemDetails);
+							// dataObj.appendChild(divDelivDetails);
 
 
+						}
 					}
 				</script>
 
@@ -83,7 +90,6 @@
 		 <script src="{% static '/js/get_states.js' %}"></script>
 		 <script>
 			var stateTag = document.querySelector("#idState");
-
 			function getCitiesFn(){
 				var scriptTag = document.createElement("script");
 				scriptTag.setAttribute("src","{% static '/js/getCities.js' %}");
