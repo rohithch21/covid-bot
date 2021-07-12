@@ -13,4 +13,5 @@ urlpatterns = [
     path('data/cities/', views.getCities, name='indian-cities'),
     path('data/areas/', views.getLocalities, name='localities'),
     path('data/tc/', views.viewTC, name='tc'),
+    path('data/logs/', views.viewLogs, name='logs'),
 ]

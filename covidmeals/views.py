@@ -16,6 +16,7 @@ import os
 # Create your views here.
 from django.http import HttpResponse
 
+abspath = os.path.dirname(__file__)
 
 def index(request):
     return render(request, 'covidmeals/mainView.html')
@@ -83,7 +84,8 @@ def getServiceData(request):
 
         record = MealService(name=name, phoneNumber=phoneNumber, email=emailid, address=address, signUpDate=signupDate, geoState=nameOfState, geoCity=nameOfCiy, geoLocation=namOfArea, mealsServed=meals, foodType=food, cost=cost, serviceStatus=status,moreDetails=details)
         record.save()
-        print("New service provider has been added!")
+        log = f"New service provider has been added to {namOfArea}"
+        addToLogs(log)
     return render(request, "covidmeals/mealForm.html")
 
 @csrf_exempt
@@ -145,3 +147,23 @@ def getLocalities(request):
 
 def viewTC(request):
     return render(request, 'covidmeals/tc.html')
+
+def addToLogs(logMsg):
+    relPath = os.path.join(abspath,"../static/json/logs.json")
+    logsObj = []
+    with open(relPath, 'r') as fr:
+        logsObj = json.load(fr)
+        log = { str(datetime.datetime.now()) : logMsg}
+        logsObj.append(log)
+    with open(relPath, 'w') as fw:
+        json.dump(logsObj,fw)
+
+def viewLogs(request):
+    if request.method == "GET":
+        relPath = os.path.join(abspath,"../static/json/logs.json")
+        logs = ""
+        with open(relPath, 'r') as fr:
+            logs = json.load(fr)
+            print(type(logs))
+            print(logs)
+        return JsonResponse({"result" : logs})
